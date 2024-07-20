@@ -1,0 +1,139 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block 'content' %}
+<!DOCTYPE html>
+<html>
+</head>
+<style>
+  .container1 {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.product-image {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.product-info {
+  margin-bottom: 20px;
+}
+
+.product-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-category {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-status {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.product-brand {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.product-brand span:first-child {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.product-category span:first-child {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.product-description {
+  margin-bottom: 20px;
+}
+
+.product-description h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.product-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+color: #20bf6b !important;
+text-transform: uppercase;
+background: skyblue;
+padding: 20px;
+border: 4px solid black !important;
+border-radius: 6px;
+display: inline-block;
+transition: all 0.3s ease 0s;
+}
+.btn:hover {
+color: #494949 !important;
+border-radius: 50px;
+border-color: #494949 !important;
+transition: all 0.3s ease 0s;
+}
+
+</style>
+<body>
+<div class="container1">
+  <div class="product">
+    <img class="product-image" src="{{ product.image.url }}" alt="{{ product.name }}">
+  </div>
+  <div class="product-details">
+    <div class="product-info">
+      <h2 class="product-title">{{ product.name }}</h2>
+      <div class="product-category">
+         <span>Category :</span> 
+          <span>{{ product.category }}</span></div>
+      <p class="product-status">Status: In stock</p>
+      <div class="product-brand">
+        <span>Brand :</span>
+        <span>{{ product.brand }}</span>
+      </div>
+      <div class="product-description">
+        <h3>Description</h3>
+        <p>{{ product.productdetails.description }}</p>
+      </div>
+    </div>
+    <div class="product-actions">
+      <button class="btn"><a href="{% url 'product_list' %}">Back to products</a></button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+
+{% endblock %}

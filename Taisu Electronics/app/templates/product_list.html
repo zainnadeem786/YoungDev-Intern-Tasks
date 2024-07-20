@@ -1,0 +1,62 @@
+{% extends 'master.html' %}
+{% load static %}
+
+{% block 'content' %}
+<style>
+   button {
+      border: 0;
+      margin: 0;
+      height: 50px;
+      padding: 0;
+      color: black;
+      cursor: pointer;
+      background-color: skyblue;
+      width: 100%;
+      border-radius: 50px;
+  }
+</style>
+<div class="brand_color">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="titlepage">
+                    <h2>our product</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+  <!-- our product -->
+  <div class="product">
+     <div class="container">
+        <div class="row">
+           <div class="col-md-12">
+              <div class="title">
+                 
+                 <span>We package the products with best services to make you a happy customer.</span>
+              </div>
+           </div>
+        </div>
+     </div>
+  </div>
+<div class="product-bg">
+   <div class="product-bg-white">
+      <div class="container">
+         <div class="row">
+          {% for product in products %}
+            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12">
+               <div class="product-box">
+               <a href="#"><i> <img src="{{ product.image.url }}" alt="{{ product.name }}"></i></a> 
+                  <h2>{{ product.name }}</h2>
+                  <h4>{{ product.brand }}</h4>
+                  <h5>Price: {{ product.price }}</h5>
+                  <a href="{% url 'product_detail' product.id %}">{{ product.name }}<button>Product Details</button></a>
+               </div>
+            </div>
+          {% endfor %}
+      </div>
+   </div>
+</div>
+
+{% endblock %}
